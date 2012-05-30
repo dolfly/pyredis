@@ -11,3 +11,6 @@ class redis_wrap:
         self.connection.send("PING")
         response = self.connection.recive()
         return response.decode_reponse() == "PONG"
+    def execute_command (self,command):
+        self.connection.send(command)
+        return self.connection.recive()
