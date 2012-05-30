@@ -24,7 +24,7 @@ class redis_response :
     def is_error (self):
         return self.response_text.startswith("-")
     def is_regular_response (self):
-        return self.response_text.startswith("+")
+        return not self.is_error()
     def response_type (self):
         '''
         Replies
@@ -37,11 +37,11 @@ class redis_response :
         With bulk reply the first byte of the reply will be '$'
         With multi-bulk reply the first byte of the reply will be '*'
         '''
-        reply_types = {"single line":"+",
-                       "error"      :"-",
-                       "integer"    :":",
-                       "bulk"       :"$",
-                       "multi-bluk" :"*"}
+        reply_types = {"+"  : "single line",
+                       "-"  : "error",
+                       ":"  : "integer",
+                       "$"  : "bulk",
+                       "*"  : "multi-bluk"}
         return reply_types[self.response_text[0]]
 
 class redis_connection :
