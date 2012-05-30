@@ -1,7 +1,7 @@
 TODO !
 ======
 
-Support all redis commands.
+Support all redis commands(140 commands).
 
 Suggest features to support.
 
