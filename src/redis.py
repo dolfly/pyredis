@@ -9,7 +9,6 @@ class redis_wrap:
     def ping_server (self):
         self.connection.send("PING")
         response = self.connection.recive()
-        print response.decode_reponse()
         return response.decode_reponse() == "PONG"
 
 
