@@ -9,12 +9,12 @@ class redis_connection :
 
         if (auto_connect):
             self.connect()
-            
+
     def connect (self):
         self.connection.connect((self.server_name ,6379))
 
     def send (self,cmd):
-        self.connection.send (cmd+"\r\n")
+        self.connection.send (cmd)
 
     def recive (self,byte_count=4096):
         response_text   = self.connection.recv(byte_count)
