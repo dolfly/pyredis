@@ -12,7 +12,7 @@ class redis_response :
     def is_error (self):
         return self.response_text.startswith("-")
 
-    def is_regular_response (self):
+    def is_regular (self):
         return not self.is_error()
     
     def response_type (self):
