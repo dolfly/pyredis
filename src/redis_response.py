@@ -28,5 +28,5 @@ class redis_response :
                        "-"  : "error",
                        ":"  : "integer",
                        "$"  : "bulk",
-                       "*"  : "multi-bluk"}
+                       "*"  : "multi-bulk"}
         return reply_types[self.response_text[0]]
