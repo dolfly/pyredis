@@ -2,15 +2,19 @@ class redis_response :
     response_text = None
     def __init__ (self,response_text):
         self.response_text = response_text
+
     def decode_reponse (self):
         result = self.response_text
         #remove the first chat whether it's a '+' or '-'
         result = result[1:len(result)]
         return result.strip("\r\n")
+
     def is_error (self):
         return self.response_text.startswith("-")
+
     def is_regular_response (self):
         return not self.is_error()
+    
     def response_type (self):
         '''
         Replies
