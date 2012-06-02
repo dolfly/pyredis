@@ -25,6 +25,7 @@ class redis_wrap:
     def execute_encoded_command(self,arguments):
         encoded_command =encode_command(arguments)
         self.execute_command(encoded_command)
+        return self.connection.recive()
 
     def execute_command (self,command):
         self.connection.send(command)
