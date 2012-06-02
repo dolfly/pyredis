@@ -12,6 +12,11 @@ class redis_response :
     def is_regular (self):
         return not self.is_error()
 
+    def to_text (self):
+        text = self.response_text
+        text.split("\r\n")[1]
+        return text
+
     def response_type (self):
         '''
         Replies
