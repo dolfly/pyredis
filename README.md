@@ -1,10 +1,21 @@
 Redis Client Library
 ====================
 
-Redis client library in python.
+What's this ?
+-------------
+This is a Redis client library in python.
 
-This library needs a lot of work.
-You will find the tasks in tasks.md
+Why it doesn't have a name ? 
+----------------------------
+Because I couldn't find one.
+
+Where is the documentaion ? 
+---------------------------
+It doesn't have one.It's not completed yet.
+
+How can I help ?
+----------------
+Look for open issues and contribute.
 
 Contribute
 ----------
