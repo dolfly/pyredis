@@ -2,7 +2,7 @@ import socket
 from redis_response import redis_response
 
 class redis_connection :
-    connection = socket.socket(socket.AF_INET)
+    connection  = socket.socket(socket.AF_INET)
     server_name = "127.0.0.1"
     def __init__ (self,server,auto_connect=True):
         self.server_name = server
