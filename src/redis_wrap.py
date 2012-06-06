@@ -22,7 +22,7 @@ class redis_wrap:
         return response.decode_reponse() == "PONG"
 
     def execute_encoded_command(self,arguments):
-        encoded_command =encode_command(arguments)
+        encoded_command = encode_command(arguments)
         self.execute_command(encoded_command)
         return self.connection.recive()
 
