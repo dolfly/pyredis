@@ -1,6 +1,12 @@
 import socket
 from redis_response import redis_response
 
+'''
+redis_connection
+
+Simple socket wrapper to make manipulating sockets simpler .
+'''
+
 class redis_connection :
     connection  = socket.socket(socket.AF_INET)
     server_name = "127.0.0.1"
