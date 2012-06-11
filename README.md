@@ -1,5 +1,6 @@
 Redis Client Library
 ====================
+[![Build Status](https://secure.travis-ci.org/toutouastro/redis-client-library.png)](http://travis-ci.org/toutouastro/redis-client-library)
 
 What's this ?
 -------------
