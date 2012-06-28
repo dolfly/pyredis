@@ -1,3 +1,9 @@
+'''
+redis_response
+
+Class that represents a redis reponse .
+'''
+
 class redis_response :
     response_text = None
     def __init__ (self,response_text):
