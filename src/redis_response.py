@@ -14,7 +14,7 @@ class redis_response :
         return self.text
 
     def is_error (self):
-        return self.text.startswith("-")
+        return self.text[0]=="-"
 
     def is_regular (self):
         return not self.is_error()
