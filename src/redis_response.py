@@ -14,7 +14,7 @@ class redis_response :
         return self.text
 
     def is_error (self):
-        return self.response_text.startswith("-")
+        return self.text.startswith("-")
 
     def is_regular (self):
         return not self.is_error()
@@ -30,4 +30,4 @@ class redis_response :
                        ":"  : "integer",
                        "$"  : "bulk",
                        "*"  : "multi-bulk"}
-        return reply_types[self.response_text[0]]
+        return reply_types[self.text[0]]
