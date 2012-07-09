@@ -1,4 +1,5 @@
 from socket_wrap import socket_wrap 
+from redis_response import redis_response
 
 def encode_command (command_arguments):
     ending = "\r\n"
@@ -28,4 +29,5 @@ class redis_connection:
 
     def execute_command (self,command):
         self.connection.send(command)
-        return self.connection.recive()
+	response = redis_response(self.connection.recive())
+        return response

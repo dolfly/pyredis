@@ -1,5 +1,4 @@
 import socket
-from redis_response import redis_response
 
 '''
 socket_wrap
@@ -22,9 +21,8 @@ class socket_wrap:
         self.connection.send (cmd)
 
     def recive (self,byte_count=4096):
-        response_text   = self.connection.recv(byte_count)
-        response = redis_response(response_text)
-        return response
+        response_text = self.connection.recv(byte_count)
+        return response_text
 
     def close (self):
         if (self.connection != None):
