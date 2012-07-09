@@ -9,15 +9,14 @@ Simple socket wrapper to make manipulating sockets simpler .
 
 class redis_connection :
     connection  = socket.socket(socket.AF_INET)
-    server_name = "127.0.0.1"
-    def __init__ (self,server,auto_connect=True):
-        self.server_name = server
+    def __init__ (self,server_name="127.0.0.1",
+                  port=6379,auto_connect=True):
 
         if (auto_connect):
-            self.connect()
+            self.connect(server_name,port)
 
-    def connect (self):
-        self.connection.connect((self.server_name ,6379))
+    def connect (self,server_name="127.0.0.1",port=6379):
+        self.connection.connect((self.server_name,6379))
 
     def send (self,cmd):
         self.connection.send (cmd)
