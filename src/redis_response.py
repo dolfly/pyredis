@@ -5,11 +5,12 @@ Class that represents a redis reponse .
 '''
 
 class redis_response :
-    response_text = None
+    text = None
     def __init__ (self,response_text):
-        self.response_text = response_text
+        self.text = text
 
     def decode_reponse (self):
+	#TODO : add response decoding !
         return self.response_text
 
     def is_error (self):

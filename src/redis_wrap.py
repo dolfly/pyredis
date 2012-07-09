@@ -3,6 +3,7 @@ from redis_connection import redis_connection
 def encode_command (command_arguments):
     ending = "\r\n"
     encoded_command = "*"+str(len(command_arguments))+ending
+
     for argument in command_arguments:
         encoded_command += "$"+str(len(argument))+ending
         encoded_command += argument+ending
@@ -23,8 +24,7 @@ class redis_wrap:
 
     def execute_encoded_command(self,arguments):
         encoded_command = encode_command(arguments)
-        self.execute_command(encoded_command)
-        return self.connection.recive()
+        return self.execute_command(encoded_command)
 
     def execute_command (self,command):
         self.connection.send(command)
