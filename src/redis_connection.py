@@ -23,8 +23,8 @@ class redis_connection :
 
     def recive (self,byte_count=4096):
         response_text   = self.connection.recv(byte_count)
-        response_object = redis_response(response_text)
-        return response_object
+        response = redis_response(response_text)
+        return response
 
     def close (self):
         if (self.connection != None):
