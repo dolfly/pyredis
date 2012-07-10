@@ -5,10 +5,11 @@ Class that represents a redis reponse .
 '''
 
 class redis_response :
-    __text = None
+    __text   = None
+    response = None
     def __init__ (self,text):
         self.__text = text
-
+        self.response = self.decode_response ()
     def decode_response (self):
 	response_type = self.response_type()
 	if (response_type == "integer") :
