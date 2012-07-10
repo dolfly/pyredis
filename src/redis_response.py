@@ -9,8 +9,15 @@ class redis_response :
     def __init__ (self,text):
         self.text = text
 
-    def decode_reponse (self):
-	#TODO : add response decoding !
+    def decode_response (self):
+	response_type = self.response_type()
+	if (response_type == "integer") :
+	    return self.to_int()
+	elif(response_type == "single line" or response_type == "bulk"):
+	    return self.to_text()
+	elif(response_type == "multi-bulk"):
+	    return self.to_list ()
+	
         return self.text
 
     def is_error (self):
