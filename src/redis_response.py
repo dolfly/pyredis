@@ -28,6 +28,12 @@ class redis_response :
 	        result.append (element)
 		print element
 	return result
+
+    def to_int (self):
+        text = self.text.strip("\r\n")
+	text = text.strip(":")
+	return int(text)
+
     def to_text (self):
         return self.text.split("\r\n")[1]
 
@@ -37,4 +43,5 @@ class redis_response :
                        ":"  : "integer",
                        "$"  : "bulk",
                        "*"  : "multi-bulk"}
+
         return reply_types[self.text[0]]
