@@ -10,6 +10,7 @@ class redis_response :
     def __init__ (self,text):
         self.__text = text
         self.response = self.decode_response ()
+
     def decode_response (self):
 	response_type = self.response_type()
 	if (response_type == "integer") :
