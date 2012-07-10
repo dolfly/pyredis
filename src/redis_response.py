@@ -7,7 +7,7 @@ Class that represents a redis reponse .
 class redis_response :
     __text = None
     def __init__ (self,text):
-        self.text = text
+        self.__text = text
 
     def decode_response (self):
 	response_type = self.response_type()
