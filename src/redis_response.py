@@ -6,7 +6,7 @@ Class that represents a redis reponse .
 
 class redis_response :
     text = None
-    def __init__ (self,response_text):
+    def __init__ (self,text):
         self.text = text
 
     def decode_reponse (self):
@@ -19,10 +19,17 @@ class redis_response :
     def is_regular (self):
         return not self.is_error()
 
+    def to_list (self) :
+        result = []
+	text = self.text.strip("\r\n")  
+	for element in text.split("\r\n") :
+	    if (not (element.startswith("*") 
+	          or element.startswith("$"))) :
+	        result.append (element)
+		print element
+	return result
     def to_text (self):
-        text = self.text
-        text.split("\r\n")[1]
-        return text
+        return self.text.split("\r\n")[1]
 
     def response_type (self):
         reply_types = {"+"  : "single line",

@@ -15,7 +15,7 @@ class socket_wrap:
             self.connect(server_name,port)
 
     def connect (self,server_name="127.0.0.1",port=6379):
-        self.connection.connect((self.server_name,port))
+        self.connection.connect((server_name,port))
 
     def send (self,cmd):
         self.connection.send (cmd)
