@@ -33,7 +33,6 @@ class redis_response :
 	    if (not (element.startswith("*") 
 	          or element.startswith("$"))) :
 	        result.append (element)
-		print element
 	return result
 
     def to_int (self):
