@@ -12,6 +12,7 @@ def encode_command (command_arguments):
 
 class redis_connection:
     connection = None
+
     def __init__(self,server="127.0.0.1",port=6379):
         self.connection = socket_wrap(server,port)
 
@@ -26,6 +27,7 @@ class redis_connection:
     def execute(self,arguments):
         encoded_command = encode_command(arguments)
         return self.__execute_command(encoded_command)
+
     def __execute_command (self,command):
         self.connection.send(command)
 	response = redis_response(self.connection.recive())
