@@ -21,8 +21,6 @@ class redis_response :
 	elif(response_type == "multi-bulk"):
 	    return self.to_list ()
 	
-        return self.text
-
     def is_error (self):
         return self.__text[0]=="-"
 
@@ -41,7 +39,10 @@ class redis_response :
     def to_int (self):
         text = self.__text.strip("\r\n")
 	text = text.strip(":")
-	return int(text)
+	try :
+	    return int(text)
+	except:
+	    return 0
 
     def to_text (self):
         return self.__text.split("\r\n")[1]
