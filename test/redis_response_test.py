@@ -1,5 +1,5 @@
 import nose
-from redis_response import redis_response
+from pyredis import redis_response
 
 def test_response_type ():
     response = redis_response ("-somecode")
