@@ -1,22 +1,18 @@
-Redis Client Library
+PyRedis : Redis Client Library
 ====================
 [![Build Status](https://secure.travis-ci.org/toutouastro/redis-client-library.png)](http://travis-ci.org/toutouastro/redis-client-library)
 
-What's this ?
--------------
-This is a Redis client library in python.
+PyRedis is a Redis client library in python that tends to provide a beautiful API.
 
-Why it doesn't have a name ? 
-----------------------------
-Because I couldn't find one.
+Installation :
+--------------
+```shell
+$ pip install pyredis
+````
 
-Where is the documentaion ? 
----------------------------
-It doesn't have one.It's not completed yet.
-
-How can I help ?
-----------------
-Look for open issues and contribute.
+Documentaion : 
+--------------
+Working on it !
 
 Contribute
 ----------
