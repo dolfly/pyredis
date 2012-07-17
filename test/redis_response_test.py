@@ -21,7 +21,7 @@ def test_decode_response ():
     response = redis_response (":124\r\n")
     assert response.decode_response() == 124
 
-    # integer replies
+    # multi-bulk replies
     response = redis_response ("*2\r\n$2\r\nto\r\n$5\r\ntouto")
     assert response.decode_response() == ["to","touto"]
     response = redis_response ("*3\r\n$11\r\ntoutouastro\r\n$5\r\nredis")
