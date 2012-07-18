@@ -3,6 +3,16 @@ redis_response
 
 Class that represents a redis reponse .
 '''
+class redis_exception(Exception):
+    error_message = ""
+    def __init__ (self,error_message) :
+        self.error_message = error_message
+
+    def __str__ (self) :
+        return "redis error : %s" %self.error_message
+
+    def __repr__ (self) :
+        return self.__str__()
 
 class redis_response :
     __text   = None
@@ -11,6 +21,8 @@ class redis_response :
     def __init__ (self,text):
         self.__text = text
         self.response = self.decode_response ()
+	if(self.response_type () == "error"):
+	    raise redis_exception (self.decode_response())
 
     def decode_response (self):
 	response_type = self.response_type()
@@ -20,12 +32,17 @@ class redis_response :
 	    return self.to_text()
 	elif(response_type == "multi-bulk"):
 	    return self.to_list ()
+	elif(response_type == "error"):
+	    return self.to_error_message ()
 	
     def is_error (self):
         return self.__text[0]=="-"
 
     def is_regular (self):
         return not self.is_error()
+
+    def to_error_message (self):
+        return self.__text.strip("-\r\n")
 
     def to_list (self) :
         result = []

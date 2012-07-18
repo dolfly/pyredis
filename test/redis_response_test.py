@@ -1,9 +1,9 @@
 import nose
+from nose.tools import *
 from pyredis import redis_response
+from pyredis.redis_response import redis_exception
 
 def test_response_type ():
-    response = redis_response ("-somecode")
-    assert response.response_type() == "error"
     response = redis_response ("*somecode")
     assert response.response_type() == "multi-bulk"
     response = redis_response (":somecode")
@@ -26,3 +26,7 @@ def test_decode_response ():
     assert response.decode_response() == ["to","touto"]
     response = redis_response ("*3\r\n$11\r\ntoutouastro\r\n$5\r\nredis")
     assert response.decode_response() == ["toutouastro","redis"]
+
+@raises (redis_exception)
+def test_redis_exception ():
+    response = redis_response ("-error\r\n")
