@@ -47,7 +47,6 @@ class redis_response :
     def to_single_line (self):
 	text = self.__text.strip('+')
 	text = text.strip("\r\n")
-	print text
         return text
 
     def to_error_message (self):
