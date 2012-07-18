@@ -44,15 +44,16 @@ class redis_response :
     def is_regular (self):
         return not self.is_error()
 
-    def to_single_line (self):
-	text = self.__text.strip('+')
+    def __strip_ending_and_sign (self,sign):
+	text = self.__text.strip(sign)
 	text = text.strip("\r\n")
         return text
 
+    def to_single_line (self):
+	return self.__strip_ending_and_sign("+")
+
     def to_error_message (self):
-	text = self.__text.strip('-')
-	text = text.strip("\r\n")
-        return text
+	return self.__strip_ending_and_sign("-")
 
     def to_list (self) :
         result = []
@@ -64,8 +65,7 @@ class redis_response :
 	return result
 
     def to_int (self):
-        text = self.__text.strip("\r\n")
-	text = text.strip(":")
+	text = self.__strip_ending_and_sign(":")
 	try :
 	    return int(text)
 	except:
