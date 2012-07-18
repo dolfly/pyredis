@@ -50,7 +50,9 @@ class redis_response :
         return text
 
     def to_error_message (self):
-        return self.__text.strip("-\r\n")
+	text = self.__text.strip('-')
+	text = text.strip("\r\n")
+        return text
 
     def to_list (self) :
         result = []
