@@ -8,6 +8,8 @@ def test_response_type ():
     assert response.response_type() == "multi-bulk"
     response = redis_response (":somecode")
     assert response.response_type() == "integer"
+    response = redis_response ("+somecode")
+    assert response.response_type() == "single line"
 
 def test_decode_response ():
     response = redis_response ("$8\r\nsomecode\r\n")
@@ -26,6 +28,12 @@ def test_decode_response ():
     assert response.decode_response() == ["to","touto"]
     response = redis_response ("*3\r\n$11\r\ntoutouastro\r\n$5\r\nredis")
     assert response.decode_response() == ["toutouastro","redis"]
+
+    # single line replies
+    response = redis_response ("+OK\r\n")
+    assert response.decode_response() == "OK"
+    response = redis_response ("+some message\r\n")
+    assert response.decode_response() == "some message"
 
 @raises (redis_exception)
 def test_redis_exception ():

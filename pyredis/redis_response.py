@@ -3,6 +3,7 @@ redis_response
 
 Class that represents a redis reponse .
 '''
+
 class redis_exception(Exception):
     error_message = ""
     def __init__ (self,error_message) :
@@ -28,8 +29,10 @@ class redis_response :
 	response_type = self.response_type()
 	if (response_type == "integer") :
 	    return self.to_int()
-	elif(response_type == "single line" or response_type == "bulk"):
+	elif(response_type == "bulk"):
 	    return self.to_text()
+	elif (response_type == "single line"):
+	    return self.to_single_line ()
 	elif(response_type == "multi-bulk"):
 	    return self.to_list ()
 	elif(response_type == "error"):
@@ -40,6 +43,12 @@ class redis_response :
 
     def is_regular (self):
         return not self.is_error()
+
+    def to_single_line (self):
+	text = self.__text.strip('+')
+	text = text.strip("\r\n")
+	print text
+        return text
 
     def to_error_message (self):
         return self.__text.strip("-\r\n")
