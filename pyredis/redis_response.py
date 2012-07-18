@@ -27,15 +27,15 @@ class redis_response :
 
     def decode_response (self):
 	response_type = self.response_type()
-	if (response_type == "integer") :
+	if   (response_type == "integer") :
 	    return self.to_int()
-	elif(response_type == "bulk"):
+	elif (response_type == "bulk"):
 	    return self.to_text()
 	elif (response_type == "single line"):
 	    return self.to_single_line ()
-	elif(response_type == "multi-bulk"):
+	elif (response_type == "multi-bulk"):
 	    return self.to_list ()
-	elif(response_type == "error"):
+	elif (response_type == "error"):
 	    return self.to_error_message ()
 	
     def is_error (self):
