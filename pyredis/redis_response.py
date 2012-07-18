@@ -39,7 +39,7 @@ class redis_response :
 	    return self.to_error_message ()
 	
     def is_error (self):
-        return self.__text[0]=="-"
+        return self.response_type() == "error"
 
     def is_regular (self):
         return not self.is_error()
