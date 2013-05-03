@@ -30,7 +30,7 @@ class redis_connection:
 
     def __execute_command (self,command):
         self.connection.send(command)
-	response = redis_response(self.connection.recive())
+        response = redis_response(self.connection.recive())
         return response
 
     def close(self):
