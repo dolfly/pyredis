@@ -20,7 +20,7 @@ class socket_wrap:
     def send (self,cmd):
         self.connection.send (cmd)
 
-    def recive (self,byte_count=4096):
+    def recive (self,byte_count=1024):
         response_text = self.connection.recv(byte_count)
         return response_text
 

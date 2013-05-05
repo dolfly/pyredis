@@ -20,9 +20,8 @@ class redis_connection:
         self.connection.connect()
 
     def ping (self):
-        self.connection.send("PING")
-        response = self.connection.recive()
-        return response.decode_reponse() == "PONG"
+        response = self.execute(["PING"])
+        return response.decode_response() == "PONG"
 
     def execute(self,arguments):
         encoded_command = encode_command(arguments)
